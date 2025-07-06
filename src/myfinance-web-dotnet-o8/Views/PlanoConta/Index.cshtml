@@ -1,0 +1,41 @@
+@using myfinance_web_dotnet_o8.Domain
+<h1>Plano de contas</h1>
+
+<br />
+
+<a type="button" class="btn btn-primary mb-2" asp-area="" asp-controller="PlanoConta" asp-action="Cadastro">
+    Criar item de Plano de Conta
+</a>
+
+<table class="table table-bordered">
+    <tr>
+        <td>Id</td>
+        <td>Descricao</td>
+        <td>Tipo</td>
+        <td>#</td>
+        <td>#</td>
+    </tr>
+
+    @{
+        foreach (var item in (List<PlanoConta>)ViewBag.Lista)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nome</td>
+                <td>@item.Tipo</td>
+                <td><button class="btn btn-warning" onclick="Editar(@item.Id)">Editar</button></td>
+                <td><button class="btn btn-danger" onclick="Excluir(@item.Id)">Excluir</button></td>
+            </tr>
+        }
+    }
+</table>
+
+<script>
+    function Editar(id) {
+        window.location.href = "../PlanoConta/Cadastro/" + id;
+    }
+
+    function Excluir(id) {
+        window.location.href = "../PlanoConta/Excluir/" + id;
+    }
+</script>
